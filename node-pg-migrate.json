@@ -1,0 +1,6 @@
+{
+  "databaseUrl": "${DATABASE_URL}",
+  "dir": "server/migrations",
+  "migrationsTable": "pgmigrations",
+  "schema": "public"
+}
