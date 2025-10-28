@@ -15,6 +15,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+// Root route
+app.get('/', (req, res) => {
+  res.send('🎮 Kid Quest Adventures API is running! Visit /api/health to check DB status.');
+});
+
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/progress', require('./routes/progress'));
 app.use('/api/activities', require('./routes/activities'));
