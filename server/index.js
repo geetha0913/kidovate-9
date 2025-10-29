@@ -7,16 +7,14 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(
-  cors({
-    origin: [
-      'https://kidovate-frontend-ufbq.vercel.app', // ✅ Your deployed frontend
-      'http://localhost:5173',                      // ✅ For local testing
-    ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: [
+    'http://localhost:5173', 
+    'https://kidovate-frontend-ufbq.vercel.app'
+  ],
+  credentials: true
+}));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
