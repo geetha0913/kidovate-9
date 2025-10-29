@@ -8,21 +8,26 @@ const app = express();
 
 // Middleware
 const allowedOrigins = [
-  'http://localhost:5173',
-  'https://kidovate-frontend-ufbq.vercel.app'
+  "http://localhost:5173",
+  "https://kidovate-frontend-ufbq.vercel.app",
+  "https://kidovate-frontend-ufbq-git-main-sgeethas-projects.vercel.app"
 ];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.log("❌ Blocked by CORS:", origin);
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // allow REST tools / Postman
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("❌ Blocked by CORS:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
 
 
 
