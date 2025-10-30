@@ -16,7 +16,7 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin) return callback(null, true); // allow REST tools / Postman
+      if (!origin) return callback(null, true); // allow Postman, curl, etc.
       if (allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -27,6 +27,7 @@ app.use(
     credentials: true,
   })
 );
+
 
 
 
